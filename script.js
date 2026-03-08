@@ -7,7 +7,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.getElementById('closeBtn');
     const bgMusic = document.getElementById('bg-music');
 
-    const message = "Chúc mừng ngày Quốc tế Phụ nữ 8/3! Chúc bạn luôn rạng rỡ như những đóa hoa, hạnh phúc bên những người thân yêu và gặt hái được nhiều thành công trong cuộc sống. Bạn là điều tuyệt vời nhất của thế giới này! ❤️";
+    const message = "Chúc mừng ngày Quốc tế Phụ nữ 8/3! Chúc bạn luôn rạng rỡ như những đóa hoa, hạnh phúc bên những người thân yêu và gặt hái được nhiều thành công trong cuộc sống. Bạn là điều tuyệt vời nhất của thế giới này!";
+
+
+    const playMusic = () => {
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            removeListeners();
+        }).catch(e => console.log("Autoplay waiting for interaction..."));
+    };
+
+    let musicStarted = false;
+    const removeListeners = () => {
+        const events = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
+        events.forEach(event => document.removeEventListener(event, playMusic));
+    };
+
+    const events = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
+    events.forEach(event => document.addEventListener(event, playMusic, { once: true }));
+
+
+    playMusic();
 
     function createPetal() {
         const petal = document.createElement('div');
@@ -31,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(createPetal, 200);
 
 
-    const photoSources = ['1.jpeg', '2.jpeg','3.jpeg'];
+    const photoSources = ['1.jpeg', '2.jpeg', '3.jpeg'];
 
     function createFloatingPhoto() {
         const photo = document.createElement('img');
@@ -125,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     p.element.style.transform = 'translate(0, 0) rotate(0deg) scale(1)';
                     if (index === pieces.length - 1) {
-                        bgMusic.play().catch(e => console.log("Music play blocked by browser. Click anywhere to play."));
+
+                        bgMusic.play().catch(e => console.log("Music play blocked by browser."));
                     }
                 }, 800 + (index * 10));
             }, index * 20);
@@ -149,8 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
         box.classList.remove('open');
         typingText.innerHTML = '';
         puzzleContainer.innerHTML = '';
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
+
     });
 });
-
