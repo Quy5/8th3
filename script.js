@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(createPetal, 200);
 
 
-    const photoSources = ['image4.jpeg', 'womens_day_celebration_art.png'];
+    const photoSources = ['1.jpeg', '2.jpeg','3.jpeg'];
 
     function createFloatingPhoto() {
         const photo = document.createElement('img');
@@ -153,3 +153,4 @@ document.addEventListener('DOMContentLoaded', () => {
         bgMusic.currentTime = 0;
     });
 });
+
