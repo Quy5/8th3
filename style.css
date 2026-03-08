@@ -278,7 +278,7 @@ h1 {
 
 .puzzle-piece {
     position: absolute;
-    background-image: url('image4.jpeg');
+    background-image: url('1.jpeg');
     background-size: 840px auto;
 
     transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
@@ -306,4 +306,5 @@ h1 {
     #reveal-section {
         padding: 1.5rem;
     }
+
 }
